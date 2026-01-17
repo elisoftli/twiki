@@ -52,6 +52,7 @@ The Auto Tweaker is an AI agent that reads the tweak instructions and figures ou
 - Extract and repack game archives
 - Set launch options
 - Set CPU affinity and file attributes
+- Install ReShade addons (e.g. RenoDX HDR Mods)
 
 **What it can't do (yet):**
 - In-game menu settings (anything that requires launching the game)
