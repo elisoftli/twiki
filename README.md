@@ -2,7 +2,7 @@
   <img width="150px" src="assets/icon.png" align="center" />
   <h2 align="center">Twiki - PCGamingWiki Client + Tweak Automation</h2>
   <p align="center">
-    Twiki is a <a href="https://www.pcgamingwiki.com/">PCGamingWiki</a> client for browsing and applying game tweaks.<br />
+    Twiki is a desktop app for browsing and tweaking your PC games with tweaks from <a href="https://www.pcgamingwiki.com/">PCGamingWiki</a>.
     You can apply tweaks manually using the built-in tools, or let the Auto Tweaker (an AI agent) handle config edits, registry changes, and file operations for you.
   </p>
 </p>
@@ -86,4 +86,5 @@ If you run into problems or have ideas, open an issue and I'll gladly take a loo
 - All tweak data comes from [PCGamingWiki](https://www.pcgamingwiki.com/) - an amazing community-driven resource
 
 - This is an unofficial project, not affiliated with PCGamingWiki
+
 
