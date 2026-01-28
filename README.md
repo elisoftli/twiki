@@ -71,7 +71,7 @@ Windows only for now. Download the latest release from the [releases page](https
 | Launcher | Status |
 |----------|--------|
 | Steam | ✅ |
-| Xbox | ⏳ |
+| Xbox | ✅ |
 | Epic Games | ⏳ |
 | Ubisoft Connect | ⏳ |
 | GOG Galaxy | ⏳ |
@@ -86,3 +86,4 @@ If you run into problems or have ideas, open an issue and I'll gladly take a loo
 - All tweak data comes from [PCGamingWiki](https://www.pcgamingwiki.com/) - an amazing community-driven resource
 
 - This is an unofficial project, not affiliated with PCGamingWiki
+
