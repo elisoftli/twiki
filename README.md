@@ -29,7 +29,7 @@
 
 1. Open Twiki - it detects your installed games
 2. Pick a game to see available tweaks from PCGamingWiki
-3. Apply tweaks manually, or hit "Auto Tweak" and let the Auto Tweaker handle it
+3. Browse and tweak the game manually, or hit "Auto Tweak" and let the Auto Tweaker handle it
 
 The game page shows install paths and config file paths - all clickable to open in file explorer or the built-in text editor. Some tweaks are out of scope for automation, so you just follow the instructions like you would on the PCGamingWiki website.
 
@@ -95,6 +95,7 @@ If you run into problems or have ideas, open an issue and I'll gladly take a loo
 - All tweak data comes from [PCGamingWiki](https://www.pcgamingwiki.com/) - an amazing community-driven resource
 
 - This is an unofficial project, not affiliated with PCGamingWiki
+
 
 
 
