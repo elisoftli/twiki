@@ -5,6 +5,15 @@
     Twiki is a desktop app for browsing and tweaking your PC games with tweaks from <a href="https://www.pcgamingwiki.com/">PCGamingWiki</a>.<br />
     You can tweak your games manually using the built-in tools, or let the Auto Tweaker (an AI agent) handle config edits, registry changes, and file operations for you.
   </p>
+  <p align="center">
+    <img src="https://img.shields.io/badge/PLATFORM-WINDOWS-0078d4?style=for-the-badge&logo=windows&logoColor=white" alt="Windows Only">
+    <a href="https://github.com/elisoftli/twiki/releases/latest">
+      <img src="https://img.shields.io/github/v/release/elisoftli/twiki?label=DOWNLOAD&style=for-the-badge&color=44cc11&logo=github" alt="Download">
+    </a>
+    <a href="https://github.com/elisoftli/twiki/issues">
+      <img src="https://img.shields.io/badge/REPORT-ISSUE-e05d44?style=for-the-badge&logo=github&logoColor=white" alt="Report">
+    </a>
+  </p>
 </p>
 
 <!-- <p align="center">
@@ -86,6 +95,7 @@ If you run into problems or have ideas, open an issue and I'll gladly take a loo
 - All tweak data comes from [PCGamingWiki](https://www.pcgamingwiki.com/) - an amazing community-driven resource
 
 - This is an unofficial project, not affiliated with PCGamingWiki
+
 
 
 
