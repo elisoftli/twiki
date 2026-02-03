@@ -86,6 +86,9 @@ Windows only for now. Download the latest release from the [releases page](https
 | GOG Galaxy | ⏳ |
 | EA App | ⏳ |
 
+> [!NOTE]
+> Games can also be imported manually.
+
 ## Issues & Feedback
 
 If you run into problems or have ideas, open an issue and I'll gladly take a look 🙂.
