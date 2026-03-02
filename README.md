@@ -2,7 +2,7 @@
   <img width="150px" src="assets/icon.png" align="center" />
   <h2 align="center">Twiki</h2>
   <p align="center">
-    Twiki is a desktop app for browsing and tweaking your PC games with tweaks from <a href="https://www.pcgamingwiki.com/">PCGamingWiki</a>.<br />
+    Twiki is a desktop app for browsing and tweaking your PC games with tweaks from <a href="https://www.pcgamingwiki.com/">PCGamingWiki</a> and mods from <a href="https://www.nexusmods.com/">NexusMods</a>.<br />
     You can tweak your games manually using the built-in tools, or let the Auto Tweaker (an AI agent) handle config edits, registry changes, and file operations for you.
   </p>
   <p align="center">
@@ -28,7 +28,7 @@
 ## How It Works
 
 1. Open Twiki - it detects your installed games
-2. Pick a game to see available tweaks from PCGamingWiki
+2. Pick a game to see available tweaks from PCGamingWiki and mods from NexusMods
 3. Browse and tweak the game manually, or hit "Auto Tweak" and let the Auto Tweaker handle it
 
 The game page shows install paths and config file paths - all clickable to open in file explorer or the built-in text editor. Some tweaks are out of scope for automation, so you just follow the instructions like you would on the PCGamingWiki website.
@@ -96,6 +96,7 @@ If you run into problems or have ideas, open an issue and I'll gladly take a loo
 ## Notes
 
 - All tweak data comes from [PCGamingWiki](https://www.pcgamingwiki.com/) - an amazing community-driven resource
+- Mod browsing powered by [NexusMods](https://www.nexusmods.com/)
 
 - This is an unofficial project, not affiliated with PCGamingWiki
 
