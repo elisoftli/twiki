@@ -1,0 +1,5 @@
+provider: github
+protocol: https
+owner: elisoftli
+repo: twiki
+updaterCacheDirName: twiki-updater

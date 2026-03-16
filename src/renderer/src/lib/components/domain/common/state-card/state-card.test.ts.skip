@@ -1,0 +1,165 @@
+import { describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/svelte';
+import StateCard from './state-card.svelte';
+import type { Component } from 'svelte';
+
+// Mock icon component - typed as Svelte 5 Component
+const MockIcon = (() => {}) as unknown as Component;
+
+describe.skip('StateCard', () => {
+  it('should render title', () => {
+    render(StateCard, {
+      props: {
+        icon: MockIcon,
+        title: 'Test Title',
+      },
+    });
+
+    expect(screen.getByText('Test Title')).toBeInTheDocument();
+  });
+
+  it('should render description when provided', () => {
+    render(StateCard, {
+      props: {
+        icon: MockIcon,
+        title: 'Test Title',
+        description: 'Test description text',
+      },
+    });
+
+    expect(screen.getByText('Test description text')).toBeInTheDocument();
+  });
+
+  it('should not render description when not provided', () => {
+    render(StateCard, {
+      props: {
+        icon: MockIcon,
+        title: 'Test Title',
+      },
+    });
+
+    expect(screen.queryByText('Test description text')).not.toBeInTheDocument();
+  });
+
+  it('should render action button when provided', () => {
+    const mockOnClick = vi.fn();
+
+    render(StateCard, {
+      props: {
+        icon: MockIcon,
+        title: 'Test Title',
+        action: {
+          label: 'Click Me',
+          onclick: mockOnClick,
+        },
+      },
+    });
+
+    expect(screen.getByRole('button', { name: /click me/i })).toBeInTheDocument();
+  });
+
+  it('should call onclick when action button is clicked', async () => {
+    const mockOnClick = vi.fn();
+
+    render(StateCard, {
+      props: {
+        icon: MockIcon,
+        title: 'Test Title',
+        action: {
+          label: 'Click Me',
+          onclick: mockOnClick,
+        },
+      },
+    });
+
+    await fireEvent.click(screen.getByRole('button', { name: /click me/i }));
+
+    expect(mockOnClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not render action button when not provided', () => {
+    render(StateCard, {
+      props: {
+        icon: MockIcon,
+        title: 'Test Title',
+      },
+    });
+
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
+  });
+
+  it('should render with error variant styling', () => {
+    const { container } = render(StateCard, {
+      props: {
+        variant: 'error',
+        icon: MockIcon,
+        title: 'Error Title',
+      },
+    });
+
+    // The component should render successfully with error variant
+    expect(screen.getByText('Error Title')).toBeInTheDocument();
+    expect(container.querySelector('.border-destructive\\/20')).toBeInTheDocument();
+  });
+
+  it('should render with warning variant styling', () => {
+    const { container } = render(StateCard, {
+      props: {
+        variant: 'warning',
+        icon: MockIcon,
+        title: 'Warning Title',
+      },
+    });
+
+    expect(screen.getByText('Warning Title')).toBeInTheDocument();
+    expect(container.querySelector('.border-yellow-500\\/20')).toBeInTheDocument();
+  });
+
+  it('should render with empty variant by default', () => {
+    render(StateCard, {
+      props: {
+        icon: MockIcon,
+        title: 'Empty Title',
+      },
+    });
+
+    expect(screen.getByText('Empty Title')).toBeInTheDocument();
+  });
+
+  it('should apply custom class', () => {
+    const { container } = render(StateCard, {
+      props: {
+        icon: MockIcon,
+        title: 'Test Title',
+        class: 'custom-test-class',
+      },
+    });
+
+    expect(container.querySelector('.custom-test-class')).toBeInTheDocument();
+  });
+
+  it('should render non-centered when centered is false', () => {
+    const { container } = render(StateCard, {
+      props: {
+        icon: MockIcon,
+        title: 'Test Title',
+        centered: false,
+      },
+    });
+
+    // Non-centered version uses py-12 instead of min-h-[60vh]
+    expect(container.querySelector('.py-12')).toBeInTheDocument();
+    expect(container.querySelector('.min-h-\\[60vh\\]')).not.toBeInTheDocument();
+  });
+
+  it('should render centered by default', () => {
+    const { container } = render(StateCard, {
+      props: {
+        icon: MockIcon,
+        title: 'Test Title',
+      },
+    });
+
+    expect(container.querySelector('.min-h-\\[60vh\\]')).toBeInTheDocument();
+  });
+});

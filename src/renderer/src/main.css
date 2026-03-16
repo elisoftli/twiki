@@ -1,0 +1,198 @@
+/* Theme fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Theme imports */
+@import "./themes/claude.css";
+@import "./themes/nature.css";
+@import "./themes/summer.css";
+@import "./themes/clean-slate.css";
+@import "./themes/sunset-horizon.css";
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground select-none;
+  }
+  /* Allow text selection for inputs and textareas */
+  input,
+  textarea,
+  [contenteditable="true"] {
+    @apply select-text;
+  }
+  button,
+  [role="button"],
+  [data-accordion-trigger] {
+    @apply cursor-pointer;
+  }
+
+  /* Custom Scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--muted-foreground);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px color-mix(in oklch, var(--primary), transparent 70%);
+  }
+  50% {
+    box-shadow: 0 0 30px color-mix(in oklch, var(--primary), transparent 50%);
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.4s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--card) 0%,
+      var(--border) 50%,
+      var(--card) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  .glass {
+    background: color-mix(in oklch, var(--card), transparent 15%);
+    backdrop-filter: blur(12px);
+    border: 1px solid color-mix(in oklch, var(--border), transparent 50%);
+  }
+
+  /* Left-truncation for paths - shows end of text with ellipsis at start */
+  .truncate-left {
+    direction: rtl;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    unicode-bidi: plaintext;
+  }
+
+  /* Path display container with monospace font */
+  .path-display {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', monospace;
+    font-size: 0.8125rem;
+    letter-spacing: -0.01em;
+    font-feature-settings: 'liga' 1, 'calt' 1;
+  }
+
+  /* Subtle path separator styling */
+  .path-separator {
+    opacity: 0.5;
+    margin: 0 0.125rem;
+  }
+
+  /* Operation count badge */
+  .op-count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    padding: 0.125rem 0.375rem;
+    border-radius: 9999px;
+    background: color-mix(in oklch, var(--muted), transparent 50%);
+    color: var(--muted-foreground);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@plugin "@tailwindcss/typography";
+
+/* Suppress native focus styles in controller mode — the GamepadFocusRing overlay replaces them */
+.gamepad-active *:focus-visible {
+  outline: none !important;
+  ring: none !important;
+  box-shadow: none !important;
+}
+
+/* Gamepad focus ring */
+.gamepad-focus-ring {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  border: 2px solid var(--primary);
+  box-shadow: 0 0 12px color-mix(in oklch, var(--primary), transparent 50%);
+  transition: top 0.15s ease, left 0.15s ease, width 0.15s ease, height 0.15s ease, border-radius 0.15s ease;
+}
+
+.gamepad-cooldown-pulse {
+  animation: gamepad-cooldown-pulse 0.6s ease-in-out infinite;
+}
+
+@keyframes gamepad-cooldown-pulse {
+  0%, 100% {
+    box-shadow: 0 0 12px color-mix(in oklch, var(--primary), transparent 50%);
+    border-color: var(--primary);
+  }
+  50% {
+    box-shadow: 0 0 20px color-mix(in oklch, var(--destructive), transparent 40%);
+    border-color: var(--destructive);
+  }
+}
+
+/* Override critical inline style from app.html to prevent FOUC */
+body {
+  visibility: visible;
+}

@@ -1,0 +1,58 @@
+appId: com.elisoftli.twiki
+productName: Twiki
+directories:
+  buildResources: resources
+files:
+  - from: out
+    to: out
+    filter:
+      - '**/*'
+  - package.json
+extraResources:
+  - from: resources/icon.png
+    to: icon.png
+  - from: resources/7zip
+    to: 7zip
+win:
+  executableName: twiki
+  target:
+    - nsis
+    - portable
+  icon: resources/icon.ico
+  signAndEditExecutable: true
+nsis:
+  artifactName: ${name}-${version}-setup.${ext}
+  shortcutName: ${productName}
+  uninstallDisplayName: ${productName}
+  createDesktopShortcut: always
+portable:
+  artifactName: ${name}-${version}-portable.${ext}
+mac:
+  entitlementsInherit: build/entitlements.mac.plist
+  extendInfo:
+    - NSCameraUsageDescription: Application requests access to the device's camera.
+    - NSMicrophoneUsageDescription: Application requests access to the device's microphone.
+    - NSDocumentsFolderUsageDescription: Application requests access to the user's Documents folder.
+    - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
+  notarize: false
+dmg:
+  artifactName: ${name}-${version}.${ext}
+linux:
+  target:
+    - AppImage
+    - snap
+    - deb
+  maintainer: electronjs.org
+  category: Utility
+appImage:
+  artifactName: ${name}-${version}.${ext}
+npmRebuild: false
+publish:
+  provider: github
+  protocol: https
+  owner: elisoftli
+  repo: twiki
+  updaterCacheDirName: twiki-updater
+  vPrefixedTagName: true
+electronDownload:
+  mirror: https://npmmirror.com/mirrors/electron/
