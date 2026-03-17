@@ -9,9 +9,9 @@
     serviceStatusStore,
     authStore,
     nexusModsDownloadDialogStore,
-    gamepadStore,
+    // gamepadStore,
   } from '$lib/stores';
-  import GamepadFocusRing from '$lib/gamepad/GamepadFocusRing.svelte';
+  // import GamepadFocusRing from '$lib/gamepad/GamepadFocusRing.svelte';
   import type { NexusModsDownloadReason } from '$lib/stores/nexusmods-download-dialog.store.svelte';
   import type { Settings } from '../../../main/interfaces';
   import { SidebarInset, SidebarProvider } from '$lib/components/ui/sidebar';
@@ -208,8 +208,8 @@
   setContext('openConfigFile', openConfigFile);
 
   onMount(async () => {
-    // Initialize gamepad support
-    gamepadStore.init();
+    // Initialize gamepad support (disabled until controller navigation is fully implemented)
+    // gamepadStore.init();
 
     // Initialize auth store first (other stores may depend on auth state)
     await authStore.init();
@@ -231,7 +231,7 @@
   });
 
   onDestroy(() => {
-    gamepadStore.dispose();
+    // gamepadStore.dispose();
     authStore.cleanup();
     tweakDialogStore.cleanup();
     updaterStore.cleanup();
@@ -325,10 +325,10 @@
   <!-- NexusMods Download Dialog (global, managed by store) -->
   <NexusModsDownloadDialog />
 
-  <!-- Gamepad focus ring overlay -->
-  {#if gamepadStore.isControllerMode}
+  <!-- Gamepad focus ring overlay (disabled until controller navigation is fully implemented) -->
+  <!-- {#if gamepadStore.isControllerMode}
     <GamepadFocusRing />
-  {/if}
+  {/if} -->
 
   <!-- Toast notifications -->
   <Toaster />
