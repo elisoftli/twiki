@@ -538,7 +538,7 @@
 
     <Dialog.Footer class="pt-4 border-t border-border/30">
       {#if isActive}
-        <Tooltip.Root>
+        <Tooltip.Root ignoreNonKeyboardFocus>
           <Tooltip.Trigger class="mr-auto">
             <label class="flex items-center gap-2 text-sm text-muted-foreground cursor-pointer select-none">
               <Switch checked={sessionAutoApproveReadOnly} onCheckedChange={(v) => sessionAutoApproveReadOnly = v} class="scale-75" />
