@@ -25,21 +25,11 @@ const logger = createLogger('EnvService');
 
 const envDir = join(__dirname, '../..');
 
-// Load .env.production first (provides production defaults like API URLs),
-// then .env which can override for local development.
-// dotenv does not overwrite existing values, so .env wins for any shared keys.
-const prodResult = config({ path: join(envDir, '.env.production') });
-if (!prodResult.error) {
-  logger.debug('.env.production file loaded');
-}
-
 const result = config({ path: join(envDir, '.env') });
-if (!result.error) {
+if (result.error) {
+  logger.debug('No .env file loaded (expected in packaged builds)');
+} else {
   logger.debug('.env file loaded');
-}
-
-if (prodResult.error && result.error) {
-  logger.debug('No .env files loaded (expected in packaged builds)');
 }
 
 /**
