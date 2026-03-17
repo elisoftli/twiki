@@ -1,6 +1,10 @@
 import { defineConfig, externalizeDepsPlugin, bytecodePlugin } from 'electron-vite';
 import { resolve } from 'path';
 import obfuscatorPlugin from 'rollup-plugin-obfuscator';
+import { config } from 'dotenv';
+
+// Load .env at build time so values can be injected into the bundle
+config();
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -10,6 +14,10 @@ export default defineConfig({
       externalizeDepsPlugin({ exclude: ['@twiki/shared'] }),
       bytecodePlugin(),
     ],
+    define: {
+      __BUILD_ENV_AGENT_WEBSOCKET_URL__: JSON.stringify(process.env.AGENT_WEBSOCKET_URL || ''),
+      __BUILD_ENV_API_URL__: JSON.stringify(process.env.API_URL || ''),
+    },
     build: {
       sourcemap: isProduction ? false : 'inline',
       watch: process.env.WSL_DISTRO_NAME

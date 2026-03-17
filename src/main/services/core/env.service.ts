@@ -32,12 +32,16 @@ if (result.error) {
   logger.debug('.env file loaded');
 }
 
+declare const __BUILD_ENV_AGENT_WEBSOCKET_URL__: string;
+declare const __BUILD_ENV_API_URL__: string;
+
 /**
  * Default values for all environment variables.
+ * URL defaults are injected at build time via electron-vite define.
  */
 const ENV_DEFAULTS: EnvConfig = {
-  AGENT_WEBSOCKET_URL: '',
-  API_URL: '',
+  AGENT_WEBSOCKET_URL: __BUILD_ENV_AGENT_WEBSOCKET_URL__,
+  API_URL: __BUILD_ENV_API_URL__,
   PCGW_CACHE_ENABLED: true,
   MOCK_UPDATE: false,
 };
