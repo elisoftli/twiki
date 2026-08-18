@@ -194,7 +194,7 @@
               isAgentBusy={agentStatus?.isRunning ?? false}
               completionStatus={appliedTweak?.status}
               warningMessage={appliedTweak?.status === 'warning' ? appliedTweak.summary.message : undefined}
-              canApplyTweak={!!metadata?.canApply && !serviceStatusStore.isAgentUnavailable}
+              canApplyTweak={!!metadata?.canApply && !serviceStatusStore.isAutoTweakBlocked}
             />
           {/each}
         </div>

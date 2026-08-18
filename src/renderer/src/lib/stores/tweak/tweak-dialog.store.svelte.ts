@@ -323,9 +323,14 @@ function createTweakDialogStore() {
    * If auth is required, opens auth dialog and stores pending tweak.
    */
   async function startTweak(params: StartTweakParams): Promise<void> {
-    // Guard: prevent starting tweak if agent is unavailable
-    if (serviceStatusStore.isAgentUnavailable) {
-      toast.error('Auto-tweak is currently unavailable');
+    // Guard: block only users this actually applies to. Users with their own API
+    // key are unaffected by the hosted agent being off, so the check is key-aware
+    // (see serviceStatusStore.isAutoTweakBlocked). Kept ahead of requiresAuth() so
+    // blocked users are told up front instead of being sent through sign-in first.
+    if (serviceStatusStore.isAutoTweakBlocked) {
+      toast.error(
+        serviceStatusStore.agentNotice?.message ?? 'Auto-tweak is currently unavailable'
+      );
       return;
     }
 

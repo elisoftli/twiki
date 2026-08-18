@@ -1,6 +1,6 @@
 {
   "name": "twiki",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Desktop client for viewing and automating game tweaks",
   "private": true,
   "main": "./out/main/index.js",
